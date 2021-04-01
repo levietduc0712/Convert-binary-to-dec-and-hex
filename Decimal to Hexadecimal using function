@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<math.h>
+
+int func(long long n);
+
+int main(){
+	long long n;
+    printf("Enter a binary value: ");
+    scanf("%lld", &n);
+    func(n);
+	
+	return 0;
+}
+
+int func(long long n){
+	int dec = 0, i = 0, rem;
+    long int m=0,l;
+	int tmp;
+    char s;
+	
+	//Binary to Decimal
+    while (n != 0) {
+        rem = n % 10;
+        n /= 10;
+        dec += rem * pow(2, i);
+        ++i;
+    }
+    
+    printf("Decimal value: %lld\n", dec);
+ 
+	//Decimal to Hexadecimal 
+    l = dec;
+    
+    for(l;l>0;l=l/16){
+		tmp = l % 16;
+		if( tmp < 10){
+			tmp =tmp + 48;
+			m=m*100+tmp;
+		}
+		else{
+			tmp = tmp + 55;
+	        m=m*100+tmp;
+	    }
+	}
+	
+	printf("Hexadecimal value: 0x");
+	
+	for(m;m>0;m=m/100){
+        s=m % 100;
+        printf("%c",s);
+    }
+    
+}
